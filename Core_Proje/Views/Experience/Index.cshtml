@@ -1,0 +1,61 @@
+﻿@using EntityLayer.Concrete
+@model List<Experience>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="card-header border-0">
+    <h3 class="mb-0">Deneyim Listesi Tablosu</h3>
+</div>
+<!-- Light table -->
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="id">#</th>
+                <th scope="col" class="sort" data-sort="Name">Firma Adı</th>
+                <th scope="col" class="sort" data-sort="Description">Açıklama</th>
+                <th scope="col" class="sort" data-sort="Image URL">Image URL</th>
+                <th scope="col" class="sort" data-sort="Date">Tarih</th>
+                <th scope="col">Sil</th>
+                <th scope="col" class="sort" data-sort="completion">Güncelle</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <th>@item.ExperienceID</th>
+
+                    <td class="budget">
+                        @item.Name
+                    </td>
+
+                    <td class="budget">
+                        @item.Description
+                    </td>
+                    <td class="budget">
+                        @item.ImageUrl
+                    </td>
+
+                    <td class="budget">
+                        @item.Date
+                    </td>
+
+                    <td><a href="/Experience/DeleteExperience/@item.ExperienceID" class="btn btn-danger">Sil </a> </td> @*silme işlemi için id gönderiyoruz*@
+                    <td><a href="/Experience/EditExperience/@item.ExperienceID" class="btn btn-info">Güncelle </a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Experience/AddExperience/" class="btn btn-info">Yeni Deneyim Ekle </a>
+</div>

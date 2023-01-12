@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Experience
+@{
+    ViewData["Title"] = "AddExperience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card-header border-0">
+    <h3 class="mb-0"> Deneyim Ekleme Sayfası </h3>
+</div>
+
+@using (Html.BeginForm("AddExperience", "Experience", FormMethod.Post))
+{
+
+  @*  @Html.HiddenFor(x => x.ExperienceID )*@
+  @*  <br />*@
+    @Html.Label("Çalışılan Firma")
+    @Html.TextBoxFor(x=>x.Name,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Name,"",new{@style="color:red"})
+    <br />
+    @Html.Label("Deneyim Açıklama")
+    @Html.TextAreaFor(x=>x.Description,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Description,"",new{@style="color:red"})
+    <br />
+
+    @Html.Label("Deneyim Resim URL'si")
+    @Html.TextBoxFor(x=>x.ImageUrl,new{@class="form-control"})
+    <br />
+
+    @Html.Label("Çalışma Dönemi")
+    @Html.TextBoxFor(x=>x.Date,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Date,"",new{@style="color:red"})
+    <br />
+    <button class="btn btn-success"> Ekle</button>
+
+}
